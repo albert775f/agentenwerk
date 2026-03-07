@@ -2,12 +2,23 @@
 
 import { useEffect, useMemo, useState } from "react"
 import { motion } from "framer-motion"
-import { MoveRight, PhoneCall, Bot, Cog, BarChart3, ShieldCheck } from "lucide-react"
+import { MoveRight, PhoneCall, Bot, Cog, BarChart3, ShieldCheck, Menu } from "lucide-react"
 import { SplineScene } from "@/components/ui/splite"
-import { Card } from "@/components/ui/card"
 import { Spotlight } from "@/components/ui/spotlight"
 import { GlowingEffect } from "@/components/ui/glowing-effect"
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { Separator } from "@/components/ui/separator"
+import { Card, CardContent } from "@/components/ui/card"
+import { cn } from "@/lib/utils"
+
+// ─── Data ────────────────────────────────────────────────────────────────────
+
+const navLinks = [
+  { label: "Leistungen", href: "#leistungen" },
+  { label: "Über uns", href: "#ueber-uns" },
+  { label: "Kontakt", href: "#kontakt" },
+]
 
 const services = [
   {
@@ -36,187 +47,271 @@ const services = [
   },
 ]
 
-function AnimatedHeroText() {
-  const [titleNumber, setTitleNumber] = useState(0)
-  const titles = useMemo(
-    () => ["intelligent", "effizient", "automatisiert", "skalierbar", "zukunftssicher"],
-    []
-  )
+const adjectives = ["intelligent", "effizient", "automatisiert", "skalierbar", "zukunftssicher"]
+
+// ─── Components ──────────────────────────────────────────────────────────────
+
+function Navbar() {
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setTitleNumber((prev) => (prev === titles.length - 1 ? 0 : prev + 1))
-    }, 2000)
-    return () => clearTimeout(timeoutId)
-  }, [titleNumber, titles])
+    const onScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   return (
-    <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-      <span className="bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
-        KI-Beratung
-      </span>
-      <br />
-      <span className="relative flex w-full overflow-hidden md:pb-2 md:pt-1 h-[1.2em]">
-        &nbsp;
-        {titles.map((title, index) => (
-          <motion.span
-            key={index}
-            className="absolute bg-clip-text text-transparent bg-gradient-to-b from-neutral-300 to-neutral-600 font-bold"
-            initial={{ opacity: 0, y: -100 }}
-            transition={{ type: "spring", stiffness: 50 }}
-            animate={
-              titleNumber === index
-                ? { y: 0, opacity: 1 }
-                : { y: titleNumber > index ? -150 : 150, opacity: 0 }
-            }
+    <header
+      className={cn(
+        "fixed top-0 inset-x-0 z-50 transition-all duration-300",
+        scrolled
+          ? "bg-black/80 backdrop-blur-md border-b border-neutral-800"
+          : "bg-transparent"
+      )}
+    >
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
+        {/* Logo */}
+        <span className="text-sm font-semibold tracking-[0.2em] text-white uppercase">
+          agentenwerk
+        </span>
+
+        {/* Nav links */}
+        <nav className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-sm text-neutral-400 hover:text-white transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* CTA */}
+        <div className="flex items-center gap-3">
+          <Button
+            size="sm"
+            className="hidden md:flex bg-white text-black hover:bg-neutral-200 font-medium rounded-lg px-4"
           >
-            {title}
-          </motion.span>
-        ))}
-      </span>
-    </h1>
+            Kontakt
+          </Button>
+          <button className="md:hidden text-neutral-400 hover:text-white transition-colors">
+            <Menu className="h-5 w-5" />
+          </button>
+        </div>
+      </div>
+    </header>
   )
 }
 
+function AnimatedWord() {
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    const id = setTimeout(() => {
+      setIndex((prev) => (prev + 1) % adjectives.length)
+    }, 2200)
+    return () => clearTimeout(id)
+  }, [index])
+
+  return (
+    <span className="relative flex overflow-hidden h-[1.15em]">
+      &nbsp;
+      {adjectives.map((word, i) => (
+        <motion.span
+          key={word}
+          className="absolute inset-0 bg-clip-text text-transparent bg-gradient-to-b from-neutral-300 to-neutral-500 font-bold"
+          initial={{ opacity: 0, y: 80 }}
+          transition={{ type: "spring", stiffness: 60, damping: 14 }}
+          animate={
+            index === i
+              ? { y: 0, opacity: 1 }
+              : { y: index > i ? -80 : 80, opacity: 0 }
+          }
+        >
+          {word}
+        </motion.span>
+      ))}
+    </span>
+  )
+}
+
+function ServiceCard({
+  icon,
+  title,
+  description,
+}: {
+  icon: React.ReactNode
+  title: string
+  description: string
+}) {
+  return (
+    <li className="min-h-[13rem] list-none">
+      <div className="relative h-full rounded-2xl border border-neutral-800 p-[3px]">
+        <GlowingEffect
+          spread={40}
+          glow={true}
+          disabled={false}
+          proximity={64}
+          inactiveZone={0.01}
+          borderWidth={2}
+        />
+        <Card className="relative h-full rounded-[13px] bg-neutral-900/80 border-0 shadow-none">
+          <CardContent className="flex h-full flex-col gap-4 p-6">
+            <div className="w-fit rounded-lg border border-neutral-700 bg-neutral-800/80 p-2">
+              {icon}
+            </div>
+            <div className="space-y-2 mt-auto">
+              <h3 className="text-base font-semibold text-neutral-100 tracking-tight">
+                {title}
+              </h3>
+              <p className="text-sm text-neutral-400 leading-relaxed">
+                {description}
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </li>
+  )
+}
+
+// ─── Page ────────────────────────────────────────────────────────────────────
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col">
-        <Card className="w-full flex-1 bg-black/[0.96] relative overflow-hidden border-0 rounded-none min-h-screen">
-          <Spotlight
-            className="-top-40 left-0 md:left-60 md:-top-20"
-            fill="white"
+    <div className="min-h-screen bg-black text-white">
+      <Navbar />
+
+      {/* ── Hero ──────────────────────────────────────────────────────────── */}
+      <section className="relative min-h-screen overflow-hidden bg-black">
+        <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
+
+        {/* Spline robot – absolute right half */}
+        <div className="absolute inset-y-0 right-0 w-full md:w-1/2 pointer-events-none md:pointer-events-auto">
+          <SplineScene
+            scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+            className="w-full h-full"
           />
+        </div>
 
-          <div className="flex flex-col md:flex-row h-screen">
-            {/* Left content */}
-            <div className="flex-1 p-8 md:p-16 relative z-10 flex flex-col justify-center">
-              <div className="mb-8">
-                <span className="text-xs font-semibold tracking-[0.3em] text-neutral-400 uppercase">
-                  agentenwerk
-                </span>
-              </div>
+        {/* Text content – contained left */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 min-h-screen flex items-center">
+          <div className="w-full md:w-1/2 py-32 flex flex-col gap-6">
+            <Badge
+              variant="secondary"
+              className="w-fit bg-neutral-900 text-neutral-400 border border-neutral-700 hover:bg-neutral-900 tracking-widest text-xs uppercase"
+            >
+              KI-Beratung
+            </Badge>
 
-              <AnimatedHeroText />
+            <h1 className="text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
+              <span className="block bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-400">
+                Ihr Unternehmen
+              </span>
+              <span className="block bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-400">
+                wird
+              </span>
+              <AnimatedWord />
+            </h1>
 
-              <p className="mt-6 text-neutral-400 max-w-lg text-lg leading-relaxed">
-                Wir begleiten Unternehmen auf dem Weg in die KI-Ära – mit
-                praxisnaher Beratung, intelligenten Agenten und messbaren
-                Ergebnissen.
-              </p>
+            <p className="text-neutral-400 text-base leading-relaxed max-w-md">
+              Wir begleiten Unternehmen auf dem Weg in die KI-Ära – mit
+              praxisnaher Beratung, intelligenten Agenten und messbaren
+              Ergebnissen.
+            </p>
 
-              <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  className="gap-3 bg-white text-black hover:bg-neutral-200 font-semibold rounded-lg px-8"
-                >
-                  Beratung anfragen <MoveRight className="w-4 h-4" />
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="gap-3 border-neutral-700 text-neutral-300 hover:border-neutral-500 hover:text-white rounded-lg px-8 bg-transparent"
-                >
-                  Mehr erfahren <PhoneCall className="w-4 h-4" />
-                </Button>
-              </div>
-            </div>
-
-            {/* Right content – 3D Robot */}
-            <div className="flex-1 relative min-h-[400px] md:min-h-0">
-              <SplineScene
-                scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                className="w-full h-full"
-              />
+            <div className="flex flex-wrap gap-3 pt-2">
+              <Button
+                size="lg"
+                className="gap-2 bg-white text-black hover:bg-neutral-200 font-semibold rounded-lg"
+              >
+                Beratung anfragen <MoveRight className="h-4 w-4" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="gap-2 border-neutral-700 text-neutral-300 hover:text-white hover:border-neutral-500 bg-transparent rounded-lg"
+              >
+                Erstgespräch <PhoneCall className="h-4 w-4" />
+              </Button>
             </div>
           </div>
-        </Card>
+        </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-24 px-8 md:px-16 bg-neutral-950">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-xs font-semibold tracking-[0.3em] text-neutral-500 uppercase">
-              Unsere Leistungen
-            </span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
+      {/* ── Services ──────────────────────────────────────────────────────── */}
+      <section id="leistungen" className="py-24 bg-neutral-950">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-14">
+            <Badge
+              variant="secondary"
+              className="mb-4 bg-neutral-900 text-neutral-400 border border-neutral-700 hover:bg-neutral-900 tracking-widest text-xs uppercase"
+            >
+              Leistungen
+            </Badge>
+            <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-white">
               Was wir bieten
             </h2>
-            <p className="mt-4 text-neutral-400 max-w-2xl mx-auto">
+            <p className="mt-3 text-neutral-400 text-sm leading-relaxed">
               Von der strategischen Beratung bis zur technischen Umsetzung –
               wir unterstützen Sie in jeder Phase Ihrer KI-Transformation.
             </p>
           </div>
 
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {services.map((service) => (
-              <li key={service.title} className="min-h-[14rem] list-none">
-                <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-neutral-800 p-2 md:rounded-[1.5rem] md:p-3">
-                  <GlowingEffect
-                    spread={40}
-                    glow={true}
-                    disabled={false}
-                    proximity={64}
-                    inactiveZone={0.01}
-                    borderWidth={3}
-                  />
-                  <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] border-neutral-800 bg-neutral-900/80 p-6 shadow-sm md:p-8">
-                    <div className="w-fit rounded-lg border border-neutral-700 bg-neutral-800 p-2">
-                      {service.icon}
-                    </div>
-                    <div className="space-y-3">
-                      <h3 className="text-xl font-semibold text-neutral-100">
-                        {service.title}
-                      </h3>
-                      <p className="text-neutral-400 leading-relaxed">
-                        {service.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </li>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {services.map((s) => (
+              <ServiceCard key={s.title} {...s} />
             ))}
           </ul>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 px-8 md:px-16 bg-black relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/30 to-transparent pointer-events-none" />
-        <div className="max-w-3xl mx-auto text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
-            Bereit für den nächsten Schritt?
-          </h2>
-          <p className="mt-6 text-neutral-400 text-lg">
-            Vereinbaren Sie jetzt ein kostenloses Erstgespräch und entdecken
-            Sie, wie KI Ihr Unternehmen transformieren kann.
-          </p>
-          <div className="mt-10">
-            <Button
-              size="lg"
-              className="px-10 bg-white text-black font-bold text-lg rounded-lg hover:bg-neutral-200"
-            >
-              Kostenloses Erstgespräch
-            </Button>
+      <Separator className="bg-neutral-900" />
+
+      {/* ── CTA ───────────────────────────────────────────────────────────── */}
+      <section id="kontakt" className="py-28 bg-black">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-xl">
+            <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-white">
+              Bereit für den nächsten Schritt?
+            </h2>
+            <p className="mt-4 text-neutral-400 text-sm leading-relaxed">
+              Vereinbaren Sie jetzt ein kostenloses Erstgespräch und entdecken
+              Sie, wie KI Ihr Unternehmen transformieren kann.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button
+                size="lg"
+                className="gap-2 bg-white text-black hover:bg-neutral-200 font-semibold rounded-lg"
+              >
+                Kostenloses Erstgespräch <MoveRight className="h-4 w-4" />
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-neutral-900 py-8 px-8 md:px-16 bg-black">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <span className="text-neutral-500 text-sm">
-            © 2026 agentenwerk · KI-Beratung
+      {/* ── Footer ────────────────────────────────────────────────────────── */}
+      <footer className="border-t border-neutral-900 bg-black">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <span className="text-xs text-neutral-600 tracking-widest uppercase">
+            © 2026 agentenwerk
           </span>
-          <div className="flex gap-6 text-neutral-500 text-sm">
-            <a href="#" className="hover:text-neutral-300 transition-colors">Impressum</a>
-            <a href="#" className="hover:text-neutral-300 transition-colors">Datenschutz</a>
-            <a href="#" className="hover:text-neutral-300 transition-colors">Kontakt</a>
-          </div>
+          <nav className="flex gap-6">
+            {["Impressum", "Datenschutz", "Kontakt"].map((label) => (
+              <a
+                key={label}
+                href="#"
+                className="text-xs text-neutral-600 hover:text-neutral-400 transition-colors"
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
         </div>
       </footer>
-    </main>
+    </div>
   )
 }
