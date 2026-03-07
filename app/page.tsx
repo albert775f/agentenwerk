@@ -1,35 +1,82 @@
 'use client'
 
+import { useEffect, useMemo, useState } from "react"
+import { motion } from "framer-motion"
+import { MoveRight, PhoneCall, Bot, Cog, BarChart3, ShieldCheck } from "lucide-react"
 import { SplineScene } from "@/components/ui/splite"
 import { Card } from "@/components/ui/card"
 import { Spotlight } from "@/components/ui/spotlight"
+import { GlowingEffect } from "@/components/ui/glowing-effect"
+import { Button } from "@/components/ui/button"
 
 const services = [
   {
-    icon: "🤖",
+    icon: <Bot className="h-5 w-5 text-neutral-400" />,
     title: "KI-Strategie",
     description:
       "Wir entwickeln eine maßgeschneiderte KI-Roadmap für Ihr Unternehmen – von der Potenzialanalyse bis zur Implementierung.",
   },
   {
-    icon: "⚙️",
+    icon: <Cog className="h-5 w-5 text-neutral-400" />,
     title: "Prozessautomatisierung",
     description:
       "Automatisieren Sie repetitive Aufgaben mit intelligenten KI-Agenten und steigern Sie die Effizienz Ihrer Teams.",
   },
   {
-    icon: "🔍",
+    icon: <BarChart3 className="h-5 w-5 text-neutral-400" />,
     title: "Datenanalyse & Insights",
     description:
       "Verwandeln Sie Ihre Rohdaten in handlungsrelevante Erkenntnisse mithilfe modernster Machine-Learning-Modelle.",
   },
   {
-    icon: "🛡️",
+    icon: <ShieldCheck className="h-5 w-5 text-neutral-400" />,
     title: "Verantwortungsvolle KI",
     description:
       "Wir begleiten Sie bei der sicheren und ethisch verantwortungsvollen Einführung von KI-Systemen in Ihrem Betrieb.",
   },
 ]
+
+function AnimatedHeroText() {
+  const [titleNumber, setTitleNumber] = useState(0)
+  const titles = useMemo(
+    () => ["intelligent", "effizient", "automatisiert", "skalierbar", "zukunftssicher"],
+    []
+  )
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setTitleNumber((prev) => (prev === titles.length - 1 ? 0 : prev + 1))
+    }, 2000)
+    return () => clearTimeout(timeoutId)
+  }, [titleNumber, titles])
+
+  return (
+    <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+      <span className="bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
+        KI-Beratung
+      </span>
+      <br />
+      <span className="relative flex w-full overflow-hidden md:pb-2 md:pt-1 h-[1.2em]">
+        &nbsp;
+        {titles.map((title, index) => (
+          <motion.span
+            key={index}
+            className="absolute bg-clip-text text-transparent bg-gradient-to-b from-neutral-300 to-neutral-600 font-bold"
+            initial={{ opacity: 0, y: -100 }}
+            transition={{ type: "spring", stiffness: 50 }}
+            animate={
+              titleNumber === index
+                ? { y: 0, opacity: 1 }
+                : { y: titleNumber > index ? -150 : 150, opacity: 0 }
+            }
+          >
+            {title}
+          </motion.span>
+        ))}
+      </span>
+    </h1>
+  )
+}
 
 export default function Home() {
   return (
@@ -45,22 +92,13 @@ export default function Home() {
           <div className="flex flex-col md:flex-row h-screen">
             {/* Left content */}
             <div className="flex-1 p-8 md:p-16 relative z-10 flex flex-col justify-center">
-              {/* Brand */}
               <div className="mb-8">
                 <span className="text-xs font-semibold tracking-[0.3em] text-neutral-400 uppercase">
                   agentenwerk
                 </span>
               </div>
 
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                <span className="bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
-                  KI-Beratung
-                </span>
-                <br />
-                <span className="bg-clip-text text-transparent bg-gradient-to-b from-neutral-300 to-neutral-600">
-                  für die Zukunft
-                </span>
-              </h1>
+              <AnimatedHeroText />
 
               <p className="mt-6 text-neutral-400 max-w-lg text-lg leading-relaxed">
                 Wir begleiten Unternehmen auf dem Weg in die KI-Ära – mit
@@ -69,12 +107,19 @@ export default function Home() {
               </p>
 
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <button className="px-8 py-3 bg-white text-black font-semibold rounded-lg hover:bg-neutral-200 transition-colors">
-                  Beratung anfragen
-                </button>
-                <button className="px-8 py-3 border border-neutral-700 text-neutral-300 font-semibold rounded-lg hover:border-neutral-500 hover:text-white transition-colors">
-                  Mehr erfahren
-                </button>
+                <Button
+                  size="lg"
+                  className="gap-3 bg-white text-black hover:bg-neutral-200 font-semibold rounded-lg px-8"
+                >
+                  Beratung anfragen <MoveRight className="w-4 h-4" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="gap-3 border-neutral-700 text-neutral-300 hover:border-neutral-500 hover:text-white rounded-lg px-8 bg-transparent"
+                >
+                  Mehr erfahren <PhoneCall className="w-4 h-4" />
+                </Button>
               </div>
             </div>
 
@@ -105,22 +150,35 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {services.map((service) => (
-              <Card
-                key={service.title}
-                className="bg-neutral-900/50 border-neutral-800 p-8 hover:border-neutral-600 transition-colors"
-              >
-                <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold text-neutral-100 mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-neutral-400 leading-relaxed">
-                  {service.description}
-                </p>
-              </Card>
+              <li key={service.title} className="min-h-[14rem] list-none">
+                <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-neutral-800 p-2 md:rounded-[1.5rem] md:p-3">
+                  <GlowingEffect
+                    spread={40}
+                    glow={true}
+                    disabled={false}
+                    proximity={64}
+                    inactiveZone={0.01}
+                    borderWidth={3}
+                  />
+                  <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] border-neutral-800 bg-neutral-900/80 p-6 shadow-sm md:p-8">
+                    <div className="w-fit rounded-lg border border-neutral-700 bg-neutral-800 p-2">
+                      {service.icon}
+                    </div>
+                    <div className="space-y-3">
+                      <h3 className="text-xl font-semibold text-neutral-100">
+                        {service.title}
+                      </h3>
+                      <p className="text-neutral-400 leading-relaxed">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
@@ -136,9 +194,12 @@ export default function Home() {
             Sie, wie KI Ihr Unternehmen transformieren kann.
           </p>
           <div className="mt-10">
-            <button className="px-10 py-4 bg-white text-black font-bold text-lg rounded-lg hover:bg-neutral-200 transition-colors">
+            <Button
+              size="lg"
+              className="px-10 bg-white text-black font-bold text-lg rounded-lg hover:bg-neutral-200"
+            >
               Kostenloses Erstgespräch
-            </button>
+            </Button>
           </div>
         </div>
       </section>
