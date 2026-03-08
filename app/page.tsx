@@ -189,7 +189,7 @@ export default function Home() {
         <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
 
         {/* Spline robot – absolute right half */}
-        <div className="absolute inset-y-0 right-0 w-full md:w-1/2 pointer-events-none md:pointer-events-auto">
+        <div className="absolute inset-y-0 right-0 w-full md:w-1/2">
           <SplineScene
             scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
             className="w-full h-full"
