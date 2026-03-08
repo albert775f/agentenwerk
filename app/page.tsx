@@ -196,9 +196,9 @@ export default function Home() {
           />
         </div>
 
-        {/* Text content – contained left */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 min-h-screen flex items-center">
-          <div className="w-full md:w-1/2 py-32 flex flex-col gap-6">
+        {/* Text content – contained left, pointer-events-none so Spline gets mouse events */}
+        <div className="pointer-events-none relative z-10 max-w-7xl mx-auto px-6 lg:px-8 min-h-screen flex items-center">
+          <div className="pointer-events-auto w-full md:w-1/2 py-32 flex flex-col gap-6">
             <Badge
               variant="secondary"
               className="w-fit bg-neutral-900 text-neutral-400 border border-neutral-700 hover:bg-neutral-900 tracking-widest text-xs uppercase"
