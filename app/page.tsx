@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react"
 import { motion } from "framer-motion"
-import { MoveRight, PhoneCall, Bot, Cog, BarChart3, ShieldCheck, Menu } from "lucide-react"
+import { MoveRight, PhoneCall, Bot, Cog, BarChart3, ShieldCheck } from "lucide-react"
 import { SplineScene } from "@/components/ui/splite"
 import { Spotlight } from "@/components/ui/spotlight"
 import { GlowingEffect } from "@/components/ui/glowing-effect"
@@ -10,15 +10,10 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { Card, CardContent } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
+import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
 
 // ─── Data ────────────────────────────────────────────────────────────────────
-
-const navLinks = [
-  { label: "Leistungen", href: "#leistungen" },
-  { label: "Über uns", href: "#ueber-uns" },
-  { label: "Kontakt", href: "#kontakt" },
-]
 
 const services = [
   {
@@ -51,59 +46,6 @@ const adjectives = ["intelligent", "effizient", "automatisiert", "skalierbar", "
 
 // ─── Components ──────────────────────────────────────────────────────────────
 
-function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
-
-  return (
-    <header
-      className={cn(
-        "fixed top-0 inset-x-0 z-50 transition-all duration-300",
-        scrolled
-          ? "bg-black/80 backdrop-blur-md border-b border-neutral-800"
-          : "bg-transparent"
-      )}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Logo */}
-        <span className="text-sm font-semibold tracking-[0.2em] text-white uppercase">
-          agentenwerk
-        </span>
-
-        {/* Nav links */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-neutral-400 hover:text-white transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
-
-        {/* CTA */}
-        <div className="flex items-center gap-3">
-          <Button
-            size="sm"
-            className="hidden md:flex bg-white text-black hover:bg-neutral-200 font-medium rounded-lg px-4"
-          >
-            Kontakt
-          </Button>
-          <button className="md:hidden text-neutral-400 hover:text-white transition-colors">
-            <Menu className="h-5 w-5" />
-          </button>
-        </div>
-      </div>
-    </header>
-  )
-}
 
 function AnimatedWord() {
   const [index, setIndex] = useState(0)
@@ -293,25 +235,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Footer ────────────────────────────────────────────────────────── */}
-      <footer className="border-t border-neutral-900 bg-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="text-xs text-neutral-600 tracking-widest uppercase">
-            © 2026 agentenwerk
-          </span>
-          <nav className="flex gap-6">
-            {["Impressum", "Datenschutz", "Kontakt"].map((label) => (
-              <a
-                key={label}
-                href="#"
-                className="text-xs text-neutral-600 hover:text-neutral-400 transition-colors"
-              >
-                {label}
-              </a>
-            ))}
-          </nav>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }
