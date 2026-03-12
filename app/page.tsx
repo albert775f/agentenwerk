@@ -165,19 +165,23 @@ export default function Home() {
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">
-              <Button
-                size="lg"
-                className="gap-2 bg-white text-black hover:bg-neutral-200 font-semibold rounded-lg"
-              >
-                Beratung anfragen <MoveRight className="h-4 w-4" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="gap-2 border-neutral-700 text-neutral-300 hover:text-white hover:border-neutral-500 bg-transparent rounded-lg"
-              >
-                Erstgespräch <PhoneCall className="h-4 w-4" />
-              </Button>
+              <a href="/termin">
+                <Button
+                  size="lg"
+                  className="gap-2 bg-white text-black hover:bg-neutral-200 font-semibold rounded-lg"
+                >
+                  Beratung anfragen <MoveRight className="h-4 w-4" />
+                </Button>
+              </a>
+              <a href="/termin">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="gap-2 border-neutral-700 text-neutral-300 hover:text-white hover:border-neutral-500 bg-transparent rounded-lg"
+                >
+                  Erstgespräch <PhoneCall className="h-4 w-4" />
+                </Button>
+              </a>
             </div>
           </div>
         </div>
@@ -224,12 +228,14 @@ export default function Home() {
               Sie, wie KI Ihr Unternehmen transformieren kann.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button
-                size="lg"
-                className="gap-2 bg-white text-black hover:bg-neutral-200 font-semibold rounded-lg"
-              >
-                Kostenloses Erstgespräch <MoveRight className="h-4 w-4" />
-              </Button>
+              <a href="/termin">
+                <Button
+                  size="lg"
+                  className="gap-2 bg-white text-black hover:bg-neutral-200 font-semibold rounded-lg"
+                >
+                  Kostenloses Erstgespräch <MoveRight className="h-4 w-4" />
+                </Button>
+              </a>
             </div>
           </div>
         </div>
