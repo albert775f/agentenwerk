@@ -1,8 +1,16 @@
 'use client'
 
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { MoveRight, PhoneCall, Bot, Cog, BarChart3, ShieldCheck } from "lucide-react"
+import {
+  MoveRight,
+  Bot,
+  Phone,
+  Database,
+  LayoutDashboard,
+  GraduationCap,
+  User,
+} from "lucide-react"
 import { SplineScene } from "@/components/ui/splite"
 import { Spotlight } from "@/components/ui/spotlight"
 import { GlowingEffect } from "@/components/ui/glowing-effect"
@@ -15,37 +23,108 @@ import { Footer } from "@/components/footer"
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
+const adjectives = ["intelligent", "effizient", "automatisiert", "skalierbar", "zukunftssicher"]
+
 const services = [
   {
+    icon: <LayoutDashboard className="h-5 w-5 text-neutral-400" />,
+    title: "Web Apps statt Excel",
+    description:
+      "Operative Inhouse-Tools die echte Workflows ersetzen – gebaut in Tagen, nicht Monaten.",
+    href: "/leistungen/web-apps",
+  },
+  {
     icon: <Bot className="h-5 w-5 text-neutral-400" />,
-    title: "KI-Strategie",
+    title: "KI-Agenten & Automatisierungen",
     description:
-      "Wir entwickeln eine maßgeschneiderte KI-Roadmap für Ihr Unternehmen – von der Potenzialanalyse bis zur Implementierung.",
+      "Wiederkehrende Prozesse automatisieren mit intelligenten Agenten direkt in Ihren Systemen.",
+    href: "/leistungen/ki-agenten",
   },
   {
-    icon: <Cog className="h-5 w-5 text-neutral-400" />,
-    title: "Prozessautomatisierung",
+    icon: <Phone className="h-5 w-5 text-neutral-400" />,
+    title: "Voice Agents",
     description:
-      "Automatisieren Sie repetitive Aufgaben mit intelligenten KI-Agenten und steigern Sie die Effizienz Ihrer Teams.",
+      "KI-gestützte Telefonie für Outbound, Lead-Reaktivierung und Kundenkommunikation.",
+    href: "/leistungen/voice-agents",
   },
   {
-    icon: <BarChart3 className="h-5 w-5 text-neutral-400" />,
-    title: "Datenanalyse & Insights",
+    icon: <Database className="h-5 w-5 text-neutral-400" />,
+    title: "Corporate LLM",
     description:
-      "Verwandeln Sie Ihre Rohdaten in handlungsrelevante Erkenntnisse mithilfe modernster Machine-Learning-Modelle.",
+      "Ein privater, DSGVO-konformer KI-Assistent auf Ihren eigenen Unternehmensdaten.",
+    href: "/leistungen/corporate-llm",
   },
   {
-    icon: <ShieldCheck className="h-5 w-5 text-neutral-400" />,
-    title: "Verantwortungsvolle KI",
+    icon: <GraduationCap className="h-5 w-5 text-neutral-400" />,
+    title: "Technical Enablement",
     description:
-      "Wir begleiten Sie bei der sicheren und ethisch verantwortungsvollen Einführung von KI-Systemen in Ihrem Betrieb.",
+      "Ich bringe Ihrem Entwicklerteam bei, wie man Software in der KI-Ära baut – direkt im Team.",
+    href: "/leistungen/technical-enablement",
   },
 ]
 
-const adjectives = ["intelligent", "effizient", "automatisiert", "skalierbar", "zukunftssicher"]
+const fuerWenCards = [
+  "Ihre Teams noch mit Excel-Tabellen und manuellen Prozessen arbeiten",
+  "Sie KI einsetzen wollen, aber keine Lust auf jahrelange Digitalisierungsprojekte haben",
+  "Ihre Entwickler wissen wollen, wie man Software in der KI-Ära baut",
+  "Sie einen konkreten Engpass haben – und jemanden, der ihn behebt",
+]
+
+const prozessSteps = [
+  {
+    number: "01",
+    title: "Erstgespräch (30 Min)",
+    description:
+      "Wir reden über Ihren konkreten Engpass. Kein Pitch, keine Präsentation – nur Ihr Problem.",
+  },
+  {
+    number: "02",
+    title: "Analyse & Pilot",
+    description:
+      "Ich schaue mir Ihre Prozesse und Systeme an und liefere einen ersten funktionierenden Prototyp.",
+  },
+  {
+    number: "03",
+    title: "Umsetzung",
+    description:
+      "Was funktioniert, bauen wir aus. Direkt in Ihren Systemen, mit Ihrem Team.",
+  },
+]
+
+const useCases = [
+  {
+    problem:
+      "Das Vertriebsteam baut jedes Angebot manuell in Word zusammen – dauert 45 Minuten pro Stück.",
+    loesung:
+      "Eine Web App verbindet CRM, Produktdatenbank und Vorlagen. Angebot fertig in 3 Minuten.",
+  },
+  {
+    problem:
+      "Eingehende Anfragen werden manuell gesichtet, weitergeleitet und beantwortet – oft zu langsam.",
+    loesung:
+      "Ein KI-Agent klassifiziert, priorisiert und beantwortet Standardanfragen automatisch.",
+  },
+  {
+    problem:
+      "Hunderte alte Leads im CRM – niemand hat Zeit für manuelles Follow-up.",
+    loesung:
+      "Ein Voice Agent ruft automatisiert an, qualifiziert und bucht Termine direkt ins Kalender.",
+  },
+  {
+    problem:
+      "Firmen-Know-how steckt in PDFs, E-Mails und in Köpfen – neues Personal braucht Monate.",
+    loesung:
+      "Ein interner KI-Assistent auf den eigenen Dokumenten beantwortet Fragen sofort, DSGVO-konform.",
+  },
+  {
+    problem:
+      "Das Dev-Team baut weiter wie 2020 – KI-Tools werden kaum genutzt, Produktivität stagniert.",
+    loesung:
+      "3 Tage hands-on im Team: moderne KI-Workflows, Agent-Architekturen, Tool-Integration.",
+  },
+]
 
 // ─── Components ──────────────────────────────────────────────────────────────
-
 
 function AnimatedWord() {
   const [index, setIndex] = useState(0)
@@ -83,13 +162,17 @@ function ServiceCard({
   icon,
   title,
   description,
+  href,
+  className,
 }: {
   icon: React.ReactNode
   title: string
   description: string
+  href: string
+  className?: string
 }) {
   return (
-    <li className="min-h-[13rem] list-none">
+    <li className={`min-h-[13rem] list-none ${className ?? ""}`}>
       <div className="relative h-full rounded-2xl border border-neutral-800 p-[3px]">
         <GlowingEffect
           spread={40}
@@ -112,6 +195,12 @@ function ServiceCard({
                 {description}
               </p>
             </div>
+            <a
+              href={href}
+              className="text-xs text-neutral-400 hover:text-white transition-colors mt-1 w-fit"
+            >
+              Mehr erfahren →
+            </a>
           </CardContent>
         </Card>
       </div>
@@ -126,7 +215,7 @@ export default function Home() {
     <div className="min-h-screen bg-black text-white">
       <Navbar />
 
-      {/* ── Hero ──────────────────────────────────────────────────────────── */}
+      {/* ── Section 1: Hero ─────────────────────────────────────────────── */}
       <section className="relative min-h-screen overflow-hidden bg-black">
         <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
 
@@ -138,14 +227,14 @@ export default function Home() {
           />
         </div>
 
-        {/* Text content – contained left, pointer-events-none so Spline gets mouse events */}
+        {/* Text content */}
         <div className="pointer-events-none relative z-10 max-w-7xl mx-auto px-6 lg:px-8 min-h-screen flex items-center">
           <div className="pointer-events-auto w-full md:w-1/2 py-32 flex flex-col gap-6">
             <Badge
               variant="secondary"
               className="w-fit bg-neutral-900 text-neutral-400 border border-neutral-700 hover:bg-neutral-900 tracking-widest text-xs uppercase"
             >
-              KI-Beratung
+              KI-Beratung für KMUs
             </Badge>
 
             <h1 className="text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
@@ -159,9 +248,7 @@ export default function Home() {
             </h1>
 
             <p className="text-neutral-400 text-base leading-relaxed max-w-md">
-              Wir begleiten Unternehmen auf dem Weg in die KI-Ära – mit
-              praxisnaher Beratung, intelligenten Agenten und messbaren
-              Ergebnissen.
+              Ich baue KI-Agenten, interne Tools und Automatisierungen direkt in Ihre Prozesse ein – hands-on, ohne monatelange Konzeptphasen.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">
@@ -170,16 +257,16 @@ export default function Home() {
                   size="lg"
                   className="gap-2 bg-white text-black hover:bg-neutral-200 font-semibold rounded-lg"
                 >
-                  Beratung anfragen <MoveRight className="h-4 w-4" />
+                  Erstgespräch buchen <MoveRight className="h-4 w-4" />
                 </Button>
               </a>
-              <a href="/termin">
+              <a href="/#leistungen">
                 <Button
                   size="lg"
                   variant="outline"
                   className="gap-2 border-neutral-700 text-neutral-300 hover:text-white hover:border-neutral-500 bg-transparent hover:bg-neutral-800 rounded-lg"
                 >
-                  Erstgespräch <PhoneCall className="h-4 w-4" />
+                  Leistungen ansehen
                 </Button>
               </a>
             </div>
@@ -187,8 +274,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Services ──────────────────────────────────────────────────────── */}
-      <section id="leistungen" className="py-24 bg-neutral-950">
+      {/* ── Section 2: Für wen ──────────────────────────────────────────── */}
+      <section id="fuer-wen" className="py-24 bg-neutral-950">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-14">
+            <p className="text-neutral-400 text-lg leading-relaxed">
+              agentenwerk passt, wenn...
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {fuerWenCards.map((text, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5, ease: "easeOut" }}
+                className="bg-neutral-900/60 border border-neutral-800 rounded-2xl p-6"
+              >
+                <p className="text-neutral-300 text-sm leading-relaxed">{text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Section 3: Leistungen ───────────────────────────────────────── */}
+      <section id="leistungen" className="py-24 bg-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-2xl mb-14">
             <Badge
@@ -198,48 +311,207 @@ export default function Home() {
               Leistungen
             </Badge>
             <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-white">
-              Was wir bieten
+              Was ich baue
             </h2>
             <p className="mt-3 text-neutral-400 text-sm leading-relaxed">
-              Von der strategischen Beratung bis zur technischen Umsetzung –
-              wir unterstützen Sie in jeder Phase Ihrer KI-Transformation.
+              Fünf Bereiche, ein Ziel: KI die wirklich eingesetzt wird.
             </p>
           </div>
 
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {services.map((s) => (
-              <ServiceCard key={s.title} {...s} />
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {services.map((s, i) => (
+              <ServiceCard
+                key={s.title}
+                {...s}
+                className={
+                  i === 4 ? "sm:col-span-2 lg:col-span-1" : ""
+                }
+              />
             ))}
           </ul>
         </div>
       </section>
 
-      <Separator className="bg-neutral-900" />
-
-      {/* ── CTA ───────────────────────────────────────────────────────────── */}
-      <section id="kontakt" className="py-28 bg-black">
+      {/* ── Section 4: Wie ich arbeite ──────────────────────────────────── */}
+      <section id="prozess" className="py-24 bg-neutral-950">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="max-w-xl">
+          <div className="max-w-2xl mb-14">
+            <Badge
+              variant="secondary"
+              className="mb-4 bg-neutral-900 text-neutral-400 border border-neutral-700 hover:bg-neutral-900 tracking-widest text-xs uppercase"
+            >
+              Prozess
+            </Badge>
             <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-white">
-              Bereit für den nächsten Schritt?
+              Wie ich arbeite
             </h2>
-            <p className="mt-4 text-neutral-400 text-sm leading-relaxed">
-              Vereinbaren Sie jetzt ein kostenloses Erstgespräch und entdecken
-              Sie, wie KI Ihr Unternehmen transformieren kann.
+            <p className="mt-3 text-neutral-400 text-sm leading-relaxed">
+              Kein Pitch, keine Strategiepapiere. Direkt ans Problem.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href="/termin">
-                <Button
-                  size="lg"
-                  className="gap-2 bg-white text-black hover:bg-neutral-200 font-semibold rounded-lg"
-                >
-                  Kostenloses Erstgespräch <MoveRight className="h-4 w-4" />
-                </Button>
-              </a>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {prozessSteps.map((step, i) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15, duration: 0.5, ease: "easeOut" }}
+                className="flex flex-col gap-4"
+              >
+                <span className="text-4xl font-bold font-mono text-neutral-700">
+                  {step.number}
+                </span>
+                <h3 className="text-lg font-semibold text-white tracking-tight">
+                  {step.title}
+                </h3>
+                <p className="text-sm text-neutral-400 leading-relaxed">
+                  {step.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Section 5: Use Cases ────────────────────────────────────────── */}
+      <section id="use-cases" className="py-24 bg-black">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-14">
+            <Badge
+              variant="secondary"
+              className="mb-4 bg-neutral-900 text-neutral-400 border border-neutral-700 hover:bg-neutral-900 tracking-widest text-xs uppercase"
+            >
+              Use Cases
+            </Badge>
+            <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-white">
+              Typische Engpässe
+            </h2>
+            <p className="mt-3 text-neutral-400 text-sm leading-relaxed">
+              Erkennen Sie sich wieder?
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {useCases.map((uc, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
+                className="bg-neutral-900/60 border border-neutral-800 rounded-2xl p-6 flex flex-col gap-4"
+              >
+                <div>
+                  <p className="text-neutral-600 text-xs uppercase tracking-widest mb-2">
+                    Problem:
+                  </p>
+                  <p className="text-neutral-400 text-sm leading-relaxed">
+                    {uc.problem}
+                  </p>
+                </div>
+                <div className="border-t border-neutral-800" />
+                <div>
+                  <p className="text-neutral-400 text-xs uppercase tracking-widest mb-2">
+                    Lösung:
+                  </p>
+                  <p className="text-white text-sm font-medium leading-relaxed">
+                    {uc.loesung}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <a
+              href="/termin"
+              className="text-neutral-400 hover:text-white underline text-sm transition-colors"
+            >
+              Ähnliches Problem? Lassen Sie uns reden.
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Section 6: Über mich ────────────────────────────────────────── */}
+      <section id="ueber-mich" className="py-24 bg-neutral-950">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-14">
+            <Badge
+              variant="secondary"
+              className="mb-4 bg-neutral-900 text-neutral-400 border border-neutral-700 hover:bg-neutral-900 tracking-widest text-xs uppercase"
+            >
+              Über mich
+            </Badge>
+            <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-white">
+              Albert
+            </h2>
+          </div>
+
+          <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-start">
+            {/* Photo placeholder */}
+            <div className="flex-shrink-0 flex justify-center md:justify-start w-full md:w-auto">
+              <div className="w-24 h-24 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center">
+                <User className="h-10 w-10 text-neutral-500" />
+              </div>
+            </div>
+
+            {/* Text */}
+            <div className="flex flex-col gap-6">
+              <div className="space-y-4 text-neutral-400 text-sm leading-relaxed max-w-2xl">
+                <p>
+                  Ich bin Informatikstudent und KI Manager in einem mittelständischen Unternehmen.
+                </p>
+                <p>
+                  Ich weiß, wie KMUs von innen funktionieren: welche Prozesse hängen, warum
+                  Excel-Tabellen nicht sterben und warum Digitalisierungsprojekte oft scheitern.
+                </p>
+                <p>
+                  Bei agentenwerk baue ich KI-Lösungen, die wirklich eingesetzt werden – keine
+                  Strategiepapiere, keine monatelangen Rollouts.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {["Informatikstudent", "KI Manager", "Berlin"].map((fact) => (
+                  <span
+                    key={fact}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-neutral-700 bg-neutral-900 px-3 py-1 text-xs text-neutral-400"
+                  >
+                    {fact}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* ── Section 7: CTA ──────────────────────────────────────────────── */}
+      <section className="py-24 bg-black">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex flex-col items-center text-center gap-6">
+            <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-white max-w-2xl">
+              Einen konkreten Engpass? Lassen Sie uns 30 Minuten reden.
+            </h2>
+            <p className="text-neutral-400 text-sm leading-relaxed max-w-md">
+              Kostenlos, unverbindlich – ich melde mich in der Regel am gleichen Tag.
+            </p>
+            <a href="/termin">
+              <Button
+                size="lg"
+                className="gap-2 bg-white text-black hover:bg-neutral-200 font-semibold rounded-lg"
+              >
+                Erstgespräch buchen <MoveRight className="h-4 w-4" />
+              </Button>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <Separator className="bg-neutral-900" />
 
       <Footer />
     </div>

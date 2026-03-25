@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils"
 
 const navLinks = [
   { label: "Leistungen", href: "/#leistungen" },
-  { label: "Über uns", href: "/#ueber-uns" },
-  { label: "Kontakt", href: "/#kontakt" },
+  { label: "Wie ich arbeite", href: "/#prozess" },
+  { label: "Über mich", href: "/#ueber-mich" },
 ]
 
 export function Navbar() {
@@ -47,12 +47,14 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Button
-            size="sm"
-            className="hidden md:flex bg-white text-black hover:bg-neutral-200 font-medium rounded-lg px-4"
-          >
-            Kontakt
-          </Button>
+          <a href="/termin" className="hidden md:flex">
+            <Button
+              size="sm"
+              className="bg-white text-black hover:bg-neutral-200 font-medium rounded-lg px-4"
+            >
+              Erstgespräch buchen
+            </Button>
+          </a>
           <button className="md:hidden text-neutral-400 hover:text-white transition-colors">
             <Menu className="h-5 w-5" />
           </button>
