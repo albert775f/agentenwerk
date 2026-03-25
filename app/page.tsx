@@ -177,7 +177,7 @@ export default function Home() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="gap-2 border-neutral-700 text-neutral-300 hover:text-white hover:border-neutral-500 bg-transparent rounded-lg"
+                  className="gap-2 border-neutral-700 text-neutral-300 hover:text-white hover:border-neutral-500 bg-transparent hover:bg-neutral-800 rounded-lg"
                 >
                   Erstgespräch <PhoneCall className="h-4 w-4" />
                 </Button>
