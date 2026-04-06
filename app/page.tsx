@@ -437,61 +437,56 @@ export default function Home() {
 
       {/* ── Section 6: Über mich ────────────────────────────────────────── */}
             {/* Team Section */}
-      <section id="ueber-uns" className="bg-neutral-950 py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col items-center text-center mb-16">
-            <span className="inline-flex items-center rounded-full border border-neutral-700 bg-neutral-900 px-3 py-1 text-xs font-medium text-neutral-300 mb-6">
+            <section id="ueber-uns" className="bg-neutral-950 py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-14">
+            <Badge
+              variant="secondary"
+              className="mb-4 bg-neutral-900 text-neutral-400 border border-neutral-700 hover:bg-neutral-900 tracking-widest text-xs uppercase"
+            >
               Team
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            </Badge>
+            <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-white">
               Die Menschen hinter agentenwerk
             </h2>
-            <p className="text-neutral-400 text-lg max-w-2xl">
-            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             {/* Albert Artykov */}
-            <div className="flex flex-col">
-              <div className="rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-900 aspect-square">
-                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-neutral-700"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              </div>
-              <h3 className="text-white font-semibold text-lg mt-4">Albert Artykov</h3>
+            <div className="border-t border-neutral-800 pt-6">
+              <p className="text-xs text-neutral-600 uppercase tracking-widest mb-3">Gründer</p>
+              <h3 className="text-white font-semibold text-lg">Albert Artykov</h3>
               <p className="text-neutral-500 text-sm mt-1">KI-Entwicklung & Strategie</p>
               <a
                 href="https://www.linkedin.com/in/albertartykov/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-neutral-600 hover:text-white transition-colors mt-3 text-sm"
+                className="inline-flex items-center gap-1.5 text-neutral-600 hover:text-white transition-colors mt-4 text-xs uppercase tracking-widest"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
                 LinkedIn
               </a>
             </div>
 
             {/* David Raschke */}
-            <div className="flex flex-col">
-              <div className="rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-900 aspect-square">
-                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-neutral-700"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              </div>
-              <h3 className="text-white font-semibold text-lg mt-4">David Raschke</h3>
+            <div className="border-t border-neutral-800 pt-6">
+              <p className="text-xs text-neutral-600 uppercase tracking-widest mb-3">Team</p>
+              <h3 className="text-white font-semibold text-lg">David Raschke</h3>
               <p className="text-neutral-500 text-sm mt-1">Vertrieb & Partnerschaften</p>
             </div>
 
             {/* Yi-Fu Liu */}
-            <div className="flex flex-col">
-              <div className="rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-900 aspect-square flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-neutral-600"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              </div>
-              <h3 className="text-white font-semibold text-lg mt-4">Yi-Fu Liu</h3>
+            <div className="border-t border-neutral-800 pt-6">
+              <p className="text-xs text-neutral-600 uppercase tracking-widest mb-3">Team</p>
+              <h3 className="text-white font-semibold text-lg">Yi-Fu Liu</h3>
               <p className="text-neutral-500 text-sm mt-1">Beratung & Softwareentwicklung</p>
               <a
                 href="https://www.linkedin.com/in/yi-fu-liu-9138803b6/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-neutral-600 hover:text-white transition-colors mt-3 text-sm"
+                className="inline-flex items-center gap-1.5 text-neutral-600 hover:text-white transition-colors mt-4 text-xs uppercase tracking-widest"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
                 LinkedIn
               </a>
             </div>
