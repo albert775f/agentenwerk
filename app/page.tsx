@@ -436,54 +436,73 @@ export default function Home() {
       </section>
 
       {/* ── Section 6: Über mich ────────────────────────────────────────── */}
-      <section id="ueber-mich" className="py-24 bg-neutral-950">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="max-w-2xl mb-14">
-            <Badge
-              variant="secondary"
-              className="mb-4 bg-neutral-900 text-neutral-400 border border-neutral-700 hover:bg-neutral-900 tracking-widest text-xs uppercase"
-            >
-              Über mich
-            </Badge>
-            <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-white">
-              Albert
+            {/* Team Section */}
+      <section id="ueber-uns" className="bg-neutral-950 py-24">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col items-center text-center mb-16">
+            <span className="inline-flex items-center rounded-full border border-neutral-700 bg-neutral-900 px-3 py-1 text-xs font-medium text-neutral-300 mb-6">
+              Team
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              Die Menschen hinter agentenwerk
             </h2>
+            <p className="text-neutral-400 text-lg max-w-2xl">
+              Erfahrung aus der Praxis – nicht aus dem Lehrbuch.
+            </p>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-start">
-            {/* Photo placeholder */}
-            <div className="flex-shrink-0 flex justify-center md:justify-start w-full md:w-auto">
-              <div className="w-24 h-24 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center">
-                <User className="h-10 w-10 text-neutral-500" />
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            {/* Albert Artykov */}
+            <div className="flex flex-col">
+              <div className="rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-900 aspect-square">
+                <img
+                  src="/team/albert.png"
+                  alt="Albert Artykov"
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
+              <h3 className="text-white font-semibold text-lg mt-4">Albert Artykov</h3>
+              <p className="text-neutral-500 text-sm mt-1">KI-Entwicklung & Strategie</p>
+              <a
+                href="https://www.linkedin.com/in/albertartykov/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-neutral-600 hover:text-white transition-colors mt-3 text-sm"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
             </div>
 
-            {/* Text */}
-            <div className="flex flex-col gap-6">
-              <div className="space-y-4 text-neutral-400 text-sm leading-relaxed max-w-2xl">
-                <p>
-                  Ich bin Informatikstudent und KI Manager in einem mittelständischen Unternehmen.
-                </p>
-                <p>
-                  Ich weiß, wie KMUs von innen funktionieren: welche Prozesse hängen, warum
-                  Excel-Tabellen nicht sterben und warum Digitalisierungsprojekte oft scheitern.
-                </p>
-                <p>
-                  Bei agentenwerk baue ich KI-Lösungen, die wirklich eingesetzt werden – keine
-                  Strategiepapiere, keine monatelangen Rollouts.
-                </p>
+            {/* David Raschke */}
+            <div className="flex flex-col">
+              <div className="rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-900 aspect-square">
+                <img
+                  src="/team/david.png"
+                  alt="David Raschke"
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
+              <h3 className="text-white font-semibold text-lg mt-4">David Raschke</h3>
+              <p className="text-neutral-500 text-sm mt-1">Vertrieb & Partnerschaften</p>
+            </div>
 
-              <div className="flex flex-wrap gap-2">
-                {["Informatikstudent", "KI Manager", "Berlin"].map((fact) => (
-                  <span
-                    key={fact}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-neutral-700 bg-neutral-900 px-3 py-1 text-xs text-neutral-400"
-                  >
-                    {fact}
-                  </span>
-                ))}
+            {/* Yi-Fu Liu */}
+            <div className="flex flex-col">
+              <div className="rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-900 aspect-square flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-neutral-600"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </div>
+              <h3 className="text-white font-semibold text-lg mt-4">Yi-Fu Liu</h3>
+              <p className="text-neutral-500 text-sm mt-1">Beratung & Softwareentwicklung</p>
+              <a
+                href="https://www.linkedin.com/in/yi-fu-liu-9138803b6/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-neutral-600 hover:text-white transition-colors mt-3 text-sm"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
             </div>
           </div>
         </div>
