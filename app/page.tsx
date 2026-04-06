@@ -324,7 +324,7 @@ export default function Home() {
                 key={s.title}
                 {...s}
                 className={
-                  i === 4 ? "sm:col-span-2 lg:col-span-1" : ""
+                  i === 4 ? "sm:col-span-2 sm:max-w-[calc(50%-8px)] sm:mx-auto sm:w-full lg:col-span-1 lg:max-w-none lg:mx-0" : ""
                 }
               />
             ))}
@@ -401,7 +401,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
-                className="bg-neutral-900/60 border border-neutral-800 rounded-2xl p-6 flex flex-col gap-4"
+                className={`bg-neutral-900/60 border border-neutral-800 rounded-2xl p-6 flex flex-col gap-4${i === 4 ? " md:col-span-2 md:max-w-[calc(50%-8px)] md:mx-auto md:w-full" : ""}`}
               >
                 <div>
                   <p className="text-neutral-600 text-xs uppercase tracking-widest mb-2">
@@ -472,7 +472,7 @@ export default function Home() {
             <div className="border-t border-neutral-800 pt-6">
               <p className="text-xs text-neutral-600 uppercase tracking-widest mb-3">Team</p>
               <h3 className="text-white font-semibold text-lg">David Raschke</h3>
-              <p className="text-neutral-500 text-sm mt-1">Vertrieb & Partnerschaften</p>
+              <p className="text-neutral-500 text-sm mt-1">Vertriebsleiter</p>
             </div>
 
             {/* Yi-Fu Liu */}
