@@ -381,7 +381,7 @@ export default function CorporateLLMPage() {
               Klingt relevant?
             </h2>
             <p className="text-neutral-400 text-sm leading-relaxed max-w-md">
-              Ich schaue mir Ihre konkrete Situation an und sage Ihnen ehrlich ob und wie ein interner KI-Assistent Sinn macht.
+              Wir schauen mir Ihre konkrete Situation an und sage Ihnen ehrlich ob und wie ein interner KI-Assistent Sinn macht.
             </p>
             <a href="/termin">
               <Button

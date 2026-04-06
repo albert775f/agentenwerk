@@ -58,7 +58,7 @@ const services = [
     icon: <GraduationCap className="h-5 w-5 text-neutral-400" />,
     title: "Technical Enablement",
     description:
-      "Ich bringe Ihrem Entwicklerteam bei, wie man Software in der KI-Ära baut – direkt im Team.",
+      "Wir bringen Ihrem Entwicklerteam bei, wie man Software in der KI-Ära baut – direkt im Team.",
     href: "/leistungen/technical-enablement",
   },
 ]
@@ -81,7 +81,7 @@ const prozessSteps = [
     number: "02",
     title: "Analyse & Pilot",
     description:
-      "Ich schaue mir Ihre Prozesse und Systeme an und liefere einen ersten funktionierenden Prototyp.",
+      "Wir schauen mir Ihre Prozesse und Systeme an und liefere einen ersten funktionierenden Prototyp.",
   },
   {
     number: "03",
@@ -108,7 +108,7 @@ const useCases = [
     problem:
       "Hunderte alte Leads im CRM – niemand hat Zeit für manuelles Follow-up.",
     loesung:
-      "Ein Voice Agent ruft automatisiert an, qualifiziert und bucht Termine direkt ins Kalender.",
+      "Ein Voice Agent ruft automatisiert an, qualifiziert und bucht Termine direkt in den Kalender.",
   },
   {
     problem:
@@ -248,7 +248,7 @@ export default function Home() {
             </h1>
 
             <p className="text-neutral-400 text-base leading-relaxed max-w-md">
-              Ich baue KI-Agenten, interne Tools und Automatisierungen direkt in Ihre Prozesse ein – hands-on, ohne monatelange Konzeptphasen.
+              Wir bauen KI-Agenten, interne Tools und Automatisierungen direkt in Ihre Prozesse ein – hands-on, ohne monatelange Konzeptphasen.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">
@@ -311,7 +311,7 @@ export default function Home() {
               Leistungen
             </Badge>
             <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-white">
-              Was ich baue
+              Was wir bauen
             </h2>
             <p className="mt-3 text-neutral-400 text-sm leading-relaxed">
               Fünf Bereiche, ein Ziel: KI die wirklich eingesetzt wird.
@@ -332,7 +332,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Section 4: Wie ich arbeite ──────────────────────────────────── */}
+      {/* ── Section 4: Wie wir arbeiten ──────────────────────────────────── */}
       <section id="prozess" className="py-24 bg-neutral-950">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-2xl mb-14">
@@ -343,7 +343,7 @@ export default function Home() {
               Prozess
             </Badge>
             <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-white">
-              Wie ich arbeite
+              Wie wir arbeiten
             </h2>
             <p className="mt-3 text-neutral-400 text-sm leading-relaxed">
               Kein Pitch, keine Strategiepapiere. Direkt ans Problem.
@@ -447,7 +447,6 @@ export default function Home() {
               Die Menschen hinter agentenwerk
             </h2>
             <p className="text-neutral-400 text-lg max-w-2xl">
-              Erfahrung aus der Praxis – nicht aus dem Lehrbuch.
             </p>
           </div>
 
@@ -455,11 +454,7 @@ export default function Home() {
             {/* Albert Artykov */}
             <div className="flex flex-col">
               <div className="rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-900 aspect-square">
-                <img
-                  src="/team/albert.png"
-                  alt="Albert Artykov"
-                  className="w-full h-full object-cover object-top"
-                />
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-neutral-700"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </div>
               <h3 className="text-white font-semibold text-lg mt-4">Albert Artykov</h3>
               <p className="text-neutral-500 text-sm mt-1">KI-Entwicklung & Strategie</p>
@@ -477,11 +472,7 @@ export default function Home() {
             {/* David Raschke */}
             <div className="flex flex-col">
               <div className="rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-900 aspect-square">
-                <img
-                  src="/team/david.png"
-                  alt="David Raschke"
-                  className="w-full h-full object-cover object-top"
-                />
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-neutral-700"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </div>
               <h3 className="text-white font-semibold text-lg mt-4">David Raschke</h3>
               <p className="text-neutral-500 text-sm mt-1">Vertrieb & Partnerschaften</p>
@@ -516,7 +507,7 @@ export default function Home() {
               Einen konkreten Engpass? Lassen Sie uns 30 Minuten reden.
             </h2>
             <p className="text-neutral-400 text-sm leading-relaxed max-w-md">
-              Kostenlos, unverbindlich – ich melde mich in der Regel am gleichen Tag.
+              Kostenlos, unverbindlich – wir melden uns in der Regel am gleichen Tag.
             </p>
             <a href="/termin">
               <Button

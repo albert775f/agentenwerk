@@ -174,7 +174,7 @@ export default function VoiceAgentsPage() {
         </div>
       </section>
 
-      {/* ── 3. Was ich baue ─────────────────────────────────────────────────── */}
+      {/* ── 3. Was wir bauen ─────────────────────────────────────────────────── */}
       <section className="bg-black py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
@@ -187,7 +187,7 @@ export default function VoiceAgentsPage() {
               variants={fadeUp}
               className="text-3xl lg:text-4xl font-bold tracking-tight text-white mb-10"
             >
-              Was ich baue
+              Was wir bauen
             </motion.h2>
 
             <motion.div

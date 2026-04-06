@@ -122,7 +122,7 @@ export default function TechnicalEnablementPage() {
             </h1>
 
             <p className="text-neutral-400 text-base leading-relaxed max-w-xl">
-              Ich arbeite direkt mit Ihrem Entwicklerteam – hands-on, nicht als Berater von außen. Moderne KI-Workflows, Agent-Architekturen, praktisch anwendbar.
+              Wir arbeiten direkt mit Ihrem Entwicklerteam – hands-on, nicht als externe Berater. Moderne KI-Workflows, Agent-Architekturen, praktisch anwendbar.
             </p>
 
             <div className="pt-2">
@@ -410,7 +410,7 @@ export default function TechnicalEnablementPage() {
               Klingt relevant?
             </h2>
             <p className="text-neutral-400 text-sm leading-relaxed max-w-md">
-              Ich schaue mir Ihr Team und Ihre Projekte an und sage Ihnen ehrlich welches Format Sinn macht – und was danach möglich ist.
+              Wir schauen mir Ihr Team und Ihre Projekte an und sage Ihnen ehrlich welches Format Sinn macht – und was danach möglich ist.
             </p>
             <a href="/termin">
               <Button

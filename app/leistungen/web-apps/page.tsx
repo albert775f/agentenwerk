@@ -68,7 +68,7 @@ const fitNo = [
 const faqs = [
   {
     q: "Brauchen wir dafür eine eigene IT-Abteilung?",
-    a: "Nein. Ich übernehme Hosting, Setup und Einweisung. Die App läuft danach selbstständig.",
+    a: "Nein. Wir übernehmen Hosting, Setup und Einweisung. Die App läuft danach selbstständig.",
   },
   {
     q: "Wie lange dauert das?",
@@ -80,7 +80,7 @@ const faqs = [
   },
   {
     q: "Können wir die App später selbst erweitern?",
-    a: "Ja. Ich baue mit Standard-Technologien und dokumentiere alles sauber.",
+    a: "Ja. Wir bauen mit Standard-Technologien und dokumentiere alles sauber.",
   },
 ]
 
@@ -131,7 +131,7 @@ export default function WebAppsPage() {
               variants={fadeUp}
               className="text-neutral-400 text-base leading-relaxed max-w-xl"
             >
-              Ich baue operative Inhouse-Tools die manuelle Workflows ersetzen – passend für Ihre
+              Wir bauen operative Inhouse-Tools die manuelle Workflows ersetzen – passend für Ihre
               Systeme, nutzbar ab Tag eins.
             </motion.p>
 
@@ -182,7 +182,7 @@ export default function WebAppsPage() {
         </div>
       </section>
 
-      {/* ── 3. Was ich baue ─────────────────────────────────────────────────── */}
+      {/* ── 3. Was wir bauen ─────────────────────────────────────────────────── */}
       <section className="bg-black py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div

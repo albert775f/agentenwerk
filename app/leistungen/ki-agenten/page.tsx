@@ -82,7 +82,7 @@ const fitNo = [
 const faqs = [
   {
     q: "Ist das dasselbe wie n8n oder Zapier?",
-    a: "Ich nutze diese Tools wo sie passen – aber ich baue die Logik und den Kontext drum herum. Ein Agent der wirklich funktioniert ist mehr als ein Workflow-Baukasten.",
+    a: "Wir nutzen diese Tools wo sie passen – aber wir bauen die Logik und den Kontext drum herum. Ein Agent der wirklich funktioniert ist mehr als ein Workflow-Baukasten.",
   },
   {
     q: "Was passiert wenn der Agent Fehler macht?",
@@ -141,7 +141,7 @@ export default function KiAgentenPage() {
               variants={fadeUp}
               className="text-neutral-400 text-base leading-relaxed max-w-xl"
             >
-              Ich baue KI-Agenten die wiederkehrende Aufgaben in Ihren Systemen übernehmen – keine
+              Wir bauen KI-Agenten die wiederkehrende Aufgaben in Ihren Systemen übernehmen – keine
               SaaS-Abos, keine Black Boxes.
             </motion.p>
 
@@ -188,7 +188,7 @@ export default function KiAgentenPage() {
         </div>
       </section>
 
-      {/* ── 3. Was ich baue ─────────────────────────────────────────────────── */}
+      {/* ── 3. Was wir bauen ─────────────────────────────────────────────────── */}
       <section className="bg-black py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
@@ -201,7 +201,7 @@ export default function KiAgentenPage() {
               variants={fadeUp}
               className="text-3xl lg:text-4xl font-bold tracking-tight text-white mb-10"
             >
-              Was ich baue
+              Was wir bauen
             </motion.h2>
 
             <motion.div
