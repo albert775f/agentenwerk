@@ -12,7 +12,7 @@ import { Footer } from "@/components/footer"
 
 const problemBullets = [
   "Das Dev-Team hat gehört von KI-Tools – aber nutzt sie kaum produktiv",
-  "Neue Konzepte wie Agents, RAG, Tool-Use oder MCP sind unklar",
+  "Neue Konzepte wie Sub-Agents, Agent-Teams, RAG, Tool-Use, MCP oder Claude Code sind unklar",
   "Productivity-Potenzial wird nicht ausgeschöpft, weil niemand den Einstieg zeigt",
   "Externe Kurse sind zu theoretisch und zu weit weg vom echten Arbeitsalltag",
 ]
@@ -20,7 +20,7 @@ const problemBullets = [
 const wasWirMachen = [
   "Hands-on Sessions direkt im Team (remote oder on-site)",
   "Konkrete Workflows die sofort in bestehende Projekte übertragen werden können",
-  "Themen: KI-gestützte Entwicklung, Agent-Architekturen, LLM-Integration, Prompt Engineering, Tool-Use, MCP, lokale Modelle",
+  "Themen: KI-gestützte Entwicklung, Sub-Agents & Agent-Teams, LLM-Integration, Prompt Engineering, Tool-Use, MCP, Claude Code, lokale Modelle",
   "Kein PowerPoint – wir bauen direkt zusammen",
 ]
 
@@ -74,7 +74,7 @@ const faqs = [
   },
   {
     q: "Remote oder on-site?",
-    a: "Beides möglich. On-site (Berlin und Umgebung) bevorzugt für intensive Formate.",
+    a: "Beides möglich. On-site (Berlin, Braunschweig und Umgebung) bevorzugt für intensive Formate.",
   },
   {
     q: "Gibt es Unterlagen nach den Sessions?",
