@@ -14,14 +14,16 @@ const problemBullets = [
   "Wissen steckt in PDFs, E-Mails, Handbüchern und in Köpfen",
   "Neue Mitarbeiter brauchen Monate bis sie produktiv werden",
   "Gleiche Fragen werden immer wieder an dieselben Personen gestellt",
+  "Entwickler verbringen Zeit mit Boilerplate, Code-Reviews und Dokumentation statt mit dem eigentlichen Problem",
   "ChatGPT ist praktisch – aber keine Firmendaten wollen in OpenAI-Server",
 ]
 
 const wasIchBaue = [
   "Privater KI-Assistent der auf Ihren eigenen Dokumenten basiert (RAG-System)",
+  "KI-Coding-Assistent der Ihre Codebase kennt – für Reviews, Dokumentation und Boilerplate. Kein Code verlässt Ihre Infrastruktur.",
   "Läuft auf Ihrer Infrastruktur oder DSGVO-konformem deutschem Hosting",
   "Zugriff per Chat-Interface oder direkt in bestehende Tools integriert",
-  "Dokumententypen: PDFs, Word, Confluence, Notion, E-Mails, Datenbanken",
+  "Dokumententypen: PDFs, Word, Confluence, Notion, E-Mails, Datenbanken, Code-Repositories",
 ]
 
 const prozessSteps = [
@@ -65,6 +67,10 @@ const faqs = [
     q: "Können Mitarbeiter dem System auch neue Infos beibringen?",
     a: "Ja – je nach Setup können Dokumente direkt hochgeladen oder synchronisiert werden.",
   },
+  {
+    q: "Gilt das auch für den Coding-Assistenten?",
+    a: "Ja. Anders als GitHub Copilot oder ChatGPT verlässt Ihr Quellcode das Unternehmen nicht. Das Modell läuft lokal oder auf einem deutschen Server – DSGVO-konform und ohne Lizenzrisiken durch trainierte externe Modelle.",
+  },
 ]
 
 // ─── Page ────────────────────────────────────────────────────────────────────
@@ -103,7 +109,7 @@ export default function CorporateLLMPage() {
             </h1>
 
             <p className="text-neutral-400 text-base leading-relaxed max-w-xl">
-              Ein privater KI-Assistent auf Ihren eigenen Dokumenten – DSGVO-konform, auf Ihrer Infrastruktur.
+              Ein privater KI-Assistent auf Ihren eigenen Dokumenten und Ihrer Codebase – DSGVO-konform, auf Ihrer Infrastruktur.
             </p>
 
             <div className="pt-2">
@@ -191,7 +197,7 @@ export default function CorporateLLMPage() {
             transition={{ delay: 0.4, duration: 0.5 }}
             className="mt-8 text-neutral-600 text-sm max-w-2xl"
           >
-            Typisch: Ollama oder OpenAI (EU endpoints), Qdrant oder pgvector, optional Authentifizierung via bestehende SSO-Lösung.
+            Typisch: Ollama oder OpenAI (EU endpoints), Qdrant oder pgvector, optional Authentifizierung via bestehende SSO-Lösung. Für Coding: direkte Integration in VS Code, JetBrains oder per API.
           </motion.p>
         </div>
       </section>
@@ -259,7 +265,7 @@ export default function CorporateLLMPage() {
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="bg-neutral-900/60 border border-neutral-800 rounded-2xl p-6"
             >
-              <p className="text-neutral-600 uppercase text-xs tracking-widest mb-3">Problem</p>
+              <p className="text-neutral-600 uppercase text-xs tracking-widest mb-3">Beispiel 1 – Wissen</p>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 Ein KMU mit 40 Mitarbeitern hat 6 Jahre Prozessdokumentation in Confluence – niemand findet was, neues Personal fragt ständig nach.
               </p>
@@ -275,6 +281,32 @@ export default function CorporateLLMPage() {
               <p className="text-neutral-500 uppercase text-xs tracking-widest mb-3">Lösung</p>
               <p className="text-white text-sm leading-relaxed">
                 Interner KI-Assistent der alle Dokumente kennt und in natürlicher Sprache antwortet. Neue Mitarbeiter werden in Stunden statt Wochen produktiv.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
+              className="bg-neutral-900/60 border border-neutral-800 rounded-2xl p-6"
+            >
+              <p className="text-neutral-600 uppercase text-xs tracking-widest mb-3">Beispiel 2 – Coding</p>
+              <p className="text-neutral-400 text-sm leading-relaxed">
+                Ein Entwicklerteam verbringt täglich Stunden mit Code-Reviews, Testschreiben und internen API-Dokumentationen.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
+              className="bg-neutral-900/60 border border-neutral-800 rounded-2xl p-6"
+            >
+              <p className="text-neutral-500 uppercase text-xs tracking-widest mb-3">Lösung</p>
+              <p className="text-white text-sm leading-relaxed">
+                Privater Coding-Assistent der die eigene Codebase kennt – generiert Dokumentation, unterstützt Reviews und schlägt Implementierungen im eigenen Stil vor.
               </p>
             </motion.div>
           </div>
