@@ -36,12 +36,16 @@ export async function POST(req: NextRequest) {
   }
 
   const hash = process.env.ADMIN_PASSWORD_HASH
+  console.log('[login] hash from env:', hash)
+  console.log('[login] hash length:', hash?.length)
+  console.log('[login] password length:', password.length)
   if (!hash) {
     console.error('ADMIN_PASSWORD_HASH env var not set')
     return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
   }
 
   const valid = await bcrypt.compare(password, hash)
+  console.log('[login] bcrypt.compare result:', valid)
   if (!valid) {
     return NextResponse.json({ error: 'Invalid password' }, { status: 401 })
   }
