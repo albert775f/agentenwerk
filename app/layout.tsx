@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { AnalyticsTracker } from "@/components/analytics-tracker";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="de" className={inter.variable}>
       <body className="antialiased">
+        <AnalyticsTracker />
         {children}
       </body>
     </html>
