@@ -101,7 +101,7 @@ export default function AnalyticsPage() {
                       weekday: 'short', day: '2-digit', month: 'short',
                     })
                   }
-                  formatter={(v: number) => [v.toLocaleString('de-DE'), 'Pageviews']}
+                  formatter={(v) => [Number(v).toLocaleString('de-DE'), 'Pageviews']}
                 />
                 <Line
                   type="monotone"
