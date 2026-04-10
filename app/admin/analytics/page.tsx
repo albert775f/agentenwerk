@@ -96,8 +96,8 @@ export default function AnalyticsPage() {
                     color: '#fafafa',
                     fontSize: '12px',
                   }}
-                  labelFormatter={(v: string) =>
-                    new Date(v).toLocaleDateString('de-DE', {
+                  labelFormatter={(v) =>
+                    new Date(String(v)).toLocaleDateString('de-DE', {
                       weekday: 'short', day: '2-digit', month: 'short',
                     })
                   }
